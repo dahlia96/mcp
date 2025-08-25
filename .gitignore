@@ -1,0 +1,9 @@
+.envrc
+.env
+__pycache__
+venv
+*.jsonl
+.terraform/
+sa.json
+tfplan
+*.lock.hcl
