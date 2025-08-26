@@ -10,9 +10,9 @@ from mcp.tools.transaction_status.service import get_transaction_status
     output_schema=TransactionStatusOutput,
 )
 
-def get_transaction_status_tool(args: TransactionStatusInput) -> dict:
+def get_transaction_status_tool(args: TransactionStatusInput) -> TransactionStatusOutput:
     try:
         data = get_transaction_status(args.transaction_id)
-        return TransactionStatusOutput(ok=True, data=data).model_dump()
+        return TransactionStatusOutput(ok=True, data=data)
     except Exception as e:
-        return TransactionStatusOutput(ok=False, error=str(e)).model_dump()
+        return TransactionStatusOutput(ok=False, error=str(e))
