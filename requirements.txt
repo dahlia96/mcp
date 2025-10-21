@@ -1,1 +1,12 @@
-google-adk==1.10.0
+# ---- Core ----
+fastmcp>=2.0.0
+modelcontextprotocol>=0.1.0
+
+# ---- Google BigQuery (your tool needs this) ----
+google-cloud-bigquery>=3.11.0,<4.0.0
+
+# ---- Google Cloud Storage (to satisfy ADK & aiplatform) ----
+google-cloud-storage>=2.18.0,<3.0.0
+
+# ---- Environment variable support ----
+python-dotenv>=1.0.1
