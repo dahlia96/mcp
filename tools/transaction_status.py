@@ -4,7 +4,7 @@ from google.cloud import bigquery
 import os
 
 # Point to your service account JSON file
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/dahliaradif/.config/gcloud/conversations-api-sandbox.json"
+#os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/Users/dahliaradif/.config/gcloud/conversations-api-sandbox.json"
 
 class TransactionStatusInput(BaseModel):
     user_id: str
@@ -15,24 +15,24 @@ class TransactionStatusOutput(BaseModel):
     error: Optional[str] = None
 
 def get_transaction_status(user_id: str):
-    client = bigquery.Client(project="data-eng-prod-431217")
-    query = """
-    SELECT *
-    FROM `data-eng-prod-431217.int_remittances.near_realtime_remmitances_chat`(@user_id)
-    """
-    job_config = bigquery.QueryJobConfig(
-        query_parameters=[
-            bigquery.ScalarQueryParameter("user_id", "STRING", user_id),
-        ],
-    )
+    # client = bigquery.Client(project="data-eng-prod-431217")
+    # query = """
+    # SELECT *
+    # FROM `data-eng-prod-431217.int_remittances.near_realtime_remmitances_chat`(@user_id)
+    # """
+    # job_config = bigquery.QueryJobConfig(
+    #     query_parameters=[
+    #         bigquery.ScalarQueryParameter("user_id", "STRING", user_id),
+    #     ],
+    # )
 
-    try:
-        job = client.query(query, job_config=job_config)
-        results = list(job.result())
+    # try:
+    #     job = client.query(query, job_config=job_config)
+    #     results = list(job.result())
 
-    except Exception as e:
-        print("!!! BigQuery query failed !!!: ", e)
-        results = []
+    # except Exception as e:
+    #     print("!!! BigQuery query failed !!!: ", e)
+    #     results = []
 
     # map BigQuery row → dict for proto
     def row_to_receipt_dict(row):
@@ -60,11 +60,11 @@ def get_transaction_status(user_id: str):
             "destination_amount": str(row.get("disbursement_amount", "")),
         }
 
-    formatted_transactions = []
-    # Cap at max of 9 transactions
-    for transaction in results[:9]:
-        receipt = row_to_receipt_dict(transaction)
-        formatted_transactions.append(receipt)
+    # formatted_transactions = []
+    # # Cap at max of 9 transactions
+    # for transaction in results[:9]:
+    #     receipt = row_to_receipt_dict(transaction)
+    #     formatted_transactions.append(receipt)
 
     formatted_transactions = [
     {
