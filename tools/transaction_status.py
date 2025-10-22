@@ -89,6 +89,29 @@ def get_transaction_status(user_id: str):
         "total_cost": "109.99",  # amount + fee
         "destination_currency": "GTQ",
         "destination_amount": "819.00",  # 105 * 7.80
+    },
+    {
+        "payment_id": "pay_111122222",
+        "user_id": "user_12345",
+        "disbursement_id": "disb_333344444",
+        "amount_charged": "233.00", # USD charged to sender
+        "exchange_rate": "7.90", # USD → GTQ
+        "fee": "4.99", # transaction fee
+        "promotion_amount": "0.00",
+        "beneficiary_delivery_method_id": "store_pickup",
+        "pickup_place": "Banrural Guatemala - Zona 1",
+        "date": "2025-10-12T11:13:27Z",
+        "payment_created_at": "2025-10-12T12:31:01Z",
+        "disbursement_updated_at": "2025-10-12T13:32:20Z",
+        "status": "Incompleto",
+        "disbursement_provider": "Banrural",
+        "payment_reference_number": "REF999999999GT",
+        "beneficiary_id": "bene_8888",
+        "recipients_name": "Maria López",
+        "beneficiary_full_address": "6a Avenida 12-45, Zona 1, Ciudad de Guatemala",
+        "total_cost": "237.99", # amount + fee
+        "destination_currency": "GTQ",
+        "destination_amount": "1840.70",
     }
 ]
 
